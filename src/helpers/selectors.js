@@ -10,6 +10,20 @@ export function getAppointmentsForDay(state, day) {
   return appointmentsForDay;
 }
 
+export function getInterviewersForDay(state, day) {
+  
+  const interviewersForDay = [];
+  for (let thisDay of state.days) {
+    if (thisDay.name === day) {
+      Object.keys(state.interviewers).forEach((key) => {
+        return interviewersForDay.push(state.interviewers[key]);
+      }) 
+    }
+  };
+  
+  return interviewersForDay;
+}
+
 export function getInterview(state, interview) {
   const interviewSummary ={};
   if(interview) {

@@ -10,7 +10,7 @@ import useVisualMode from 'hooks/useVisualMode';
 
 export default function Appointment(props) {
 
-  const { interview, time, id, } = props;
+  const { interview, time, id, interviewers } = props;
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -23,7 +23,7 @@ export default function Appointment(props) {
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
-          
+        
 
         /> 
       )} 
