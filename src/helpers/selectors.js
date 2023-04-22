@@ -9,3 +9,13 @@ export function getAppointmentsForDay(state, day) {
   };
   return appointmentsForDay;
 }
+
+export function getInterview(state, interview) {
+  const interviewSummary ={};
+  if(interview) {
+    interviewSummary.student = interview.student;
+    interviewSummary.interviewer = state.interviewers[interview.interviewer];
+    return interviewSummary;
+  }
+  return null;
+};
