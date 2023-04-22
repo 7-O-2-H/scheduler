@@ -3,7 +3,6 @@ import { useState} from "react";
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
-  let historyBuffer = [...history];
 
   const toSet = (history) => {
     setMode(history[(history.length - 1)]);
@@ -31,7 +30,6 @@ export default function useVisualMode(initial) {
       history.pop();
     }
     
-    //const index = history.length - 1;
     return toSet(history);
   }
 
