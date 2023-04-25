@@ -20,24 +20,47 @@ export default function Application(props) {
   
   const setDay = day => setState({ ...state, day});
   
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  let dailyAppointments = getAppointmentsForDay(state, state.day);
 
-  const interviewers = getInterviewersForDay(state, state.day);
+  let interviewers = getInterviewersForDay(state, state.day);
+  
+  
+  
+  function bookInterview(id, interview) {
+    
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    
+    axios.put(`/api/appointments/${id}`, {...appointment})
+    
+    setState({
+      ...state,
+      appointments
+    });
+    
+  };
   
   const schedule = dailyAppointments.map(appointment => {
+    
     const interview = getInterview(state, appointment.interview);
 
     return (
       <Appointment
-      key={appointment.id}
-      id={appointment.id}
-      time={appointment.time}
-      interview={interview}
-      interviewers={interviewers}
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
       />
       )
     });
-    
     useEffect(() => {
       
       const getDays = axios.get('/api/days');

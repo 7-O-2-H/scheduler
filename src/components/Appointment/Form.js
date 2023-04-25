@@ -4,7 +4,7 @@ import Button from 'components/Button';
 
 export default function Form(props) {
 
-  const { interviewers, onSave, onCancel} = props;
+  const { interviewers, onSave, onCancel, interview, name} = props;
 
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
@@ -30,6 +30,7 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             value={student}
             onChange={(event) => setStudent(event.target.value)}
+            onSubmit={(event) => event.preventDefault()}
           />
         </form>
         <InterviewerList 
@@ -42,7 +43,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={()=>cancel()}>Cancel</Button>
-          <Button confirm >Save</Button>
+          <Button confirm onClick={()=> onSave(student, interviewer)}>Save</Button>
         </section>
       </section>
     </main>

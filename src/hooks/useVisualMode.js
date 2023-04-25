@@ -10,17 +10,17 @@ export default function useVisualMode(initial) {
   
   const transition = (initial, replace = false) => {
     
+    if(replace) {
+      history.pop();
+      history.push(initial)
+      return toSet(history);
+    }
 
     if(!replace) {  
       history.push(initial);
       return toSet(history);
     }
 
-    if(replace) {
-      history.pop();
-      history.push(initial)
-      return toSet(history);
-    }
 
   };
 
