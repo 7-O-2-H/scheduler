@@ -30,28 +30,28 @@ export default function useApplicationData() {
     
   }, []);
 
-  // const calculateSpots = (appointments) => {
-  //   let spots = 0;
-  //   let newDay = {id: null, name: null, appointments: [], interviewers: [], spots: null}
+  const calculateSpots = (appointments) => {
+    let spots = 0;
+    let newDay = {id: null, name: null, appointments: [], interviewers: [], spots: null}
     
-  //   for (let currentDay of state.days) {
-  //     if (currentDay.name === state.day) {
-  //       currentDay.appointments.map((appointmentID) => {
+    for (let currentDay of state.days) {
+      if (currentDay.name === state.day) {
+        currentDay.appointments.map((appointmentID) => {
           
-  //         if (!appointments[appointmentID].interview) {
-  //           return spots++;
-  //         }
+          if (!appointments[appointmentID].interview) {
+            return spots++;
+          }
 
-  //       });
+        });
 
-  //       newDay = {...currentDay, spots};
+        newDay = {...currentDay, spots};
 
-  //     }
-  //   }
+      }
+    }
 
-  //   const newDays = state.days.map(d => d.name === state.day? newDay : d);
-  //   return newDays;
-  // };
+    const newDays = state.days.map(d => d.name === state.day? newDay : d);
+    return newDays;
+  };
 
   function bookInterview(id, interview) {
     
@@ -70,7 +70,7 @@ export default function useApplicationData() {
         ...prev, 
         appointments
       }));
-      //setDays(calculateSpots(appointments));
+      setDays(calculateSpots(appointments));
     })
     .catch((e) => console.log(`Error: `, e))
   };

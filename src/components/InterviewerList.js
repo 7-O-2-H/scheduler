@@ -6,7 +6,11 @@ import InterviewerListItem from './InterviewerListItem';
 export default function InterviewerList(props) {
 
   const { interviewers, value, onChange } = props;
-
+  
+  InterviewerList.propTypes = {
+    interviewers: PropTypes.array.isRequired
+  };
+  
   const intArray = interviewers.map(interviewer => {
     return (
       <InterviewerListItem
@@ -30,8 +34,5 @@ export default function InterviewerList(props) {
 
   );
 
-  InterviewerList.propTypes = {
-    interviewers: PropTypes.array.isRequired
-  };
 
 };
