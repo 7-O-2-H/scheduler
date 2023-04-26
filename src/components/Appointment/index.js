@@ -11,6 +11,7 @@ import Error from 'components/Appointment/Error';
 
 
 
+
 export default function Appointment(props) {
 
   const { interview, time, id, interviewers, bookInterview, cancelInterview } = props;
@@ -41,7 +42,7 @@ export default function Appointment(props) {
   };
 
   function deleteInterview(id) {
-    transition(DELETING, true);
+    transition(DELETING);
     props
       .cancelInterview(id)
       .then(() => transition(EMPTY))
