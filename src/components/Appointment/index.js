@@ -14,7 +14,7 @@ import Error from 'components/Appointment/Error';
 
 export default function Appointment(props) {
 
-  const { interview, time, id, interviewers, bookInterview, cancelInterview } = props;
+  const { interview, time, id, interviewers, bookInterview } = props;
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -26,6 +26,8 @@ export default function Appointment(props) {
   const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(interview ? SHOW: EMPTY);
+
+  //save interview
 
   function save(name, interviewer) {
     const interview = {
@@ -41,6 +43,8 @@ export default function Appointment(props) {
 
   };
 
+  //cancel interview 
+
   function deleteInterview(id) {
     transition(DELETING);
     props
@@ -48,24 +52,26 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch((err) => transition (ERROR_DELETE, true))
   };
-
+  
   return (
-    <article className="appointment">
+    <article className="appointment"
+      data-testid="appointment"
+    >
       <Header time={time}/>
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
-          student={interview.student}
-          interviewer={interview.interviewer}
-          onDelete={()=>transition(CONFIRM)}
-          onEdit={()=> transition(EDIT)}
+        student={interview.student}
+        interviewer={interview.interviewer}
+        onDelete={()=>transition(CONFIRM)}
+        onEdit={()=> transition(EDIT)}
         /> 
-      )} 
+        )} 
       {mode === CREATE && (
         <Form 
-          interviewers={interviewers}
-          interviewer={props.interviewer}
-          onCancel={() => back(EMPTY)}
+        interviewers={interviewers}
+        interviewer={props.interviewer}
+        onCancel={() => back(EMPTY)}
           onSave={save}
           bookInterview={bookInterview}
           name={props.name}
