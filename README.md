@@ -18,6 +18,14 @@ npm test
 
 npm run storybook
 
+## Screenshots
+
+!["Screenshot of full application view"][https://github.com/7-O-2-H/scheduler/blob/master/docs/Full%20View%20of%20Application.png]
+
+!["Add appointmnet view"][https://github.com/7-O-2-H/scheduler/blob/master/docs/Add%20Appointment.png]
+
+!["Cancel appointment view"][https://github.com/7-O-2-H/scheduler/blob/master/docs/Cancel%20Appointment.png]
+
 ## Database
 
 This project runs with a postgress SQL database not included in the reepository. Therefore no data will be maintained without connection to a database.
