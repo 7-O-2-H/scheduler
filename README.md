@@ -20,9 +20,15 @@ npm run storybook
 
 ## Screenshots
 
+Full Application View:
+
 !["Screenshot of full application view"](https://github.com/7-O-2-H/scheduler/blob/master/docs/Full%20View%20of%20Application.png)
 
+Add Appointment View:
+
 !["Add appointmnet view"](https://github.com/7-O-2-H/scheduler/blob/master/docs/Add%20Appointment.png)
+
+Cancel Appointment View: 
 
 !["Cancel appointment view"](https://github.com/7-O-2-H/scheduler/blob/master/docs/Cancel%20Appointment.png)
 
