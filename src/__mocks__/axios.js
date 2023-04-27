@@ -53,7 +53,12 @@ const fixtures = {
   }
 };
 
-//mock axios get
+const interview = {
+  student: "Lydia Miller-Jones",
+  interviewer: "Sylvia Palmer",
+};
+
+//mock axios get, put, delete
 
 export default {
   get: jest.fn(url => {
@@ -80,5 +85,21 @@ export default {
         data: fixtures.interviewers
       })
     }
+  }),
+
+  put: jest.fn(() => {
+    return Promise.resolve({
+      status: 200,
+      statusText: "OK",
+      data: interview,
+    });
+  }),
+  
+  delete: jest.fn(url => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No Content"
+    })
   })
+
 }
