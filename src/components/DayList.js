@@ -16,4 +16,4 @@ export default function DayList(props){
     )
   })
   return <ul>{dayArray}</ul>
-};
+}

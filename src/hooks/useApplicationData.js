@@ -78,7 +78,10 @@ export default function useApplicationData() {
       }));
       setDays(calculateSpots(appointments));
     })
-    .catch((e) => console.log(`Error: `, e))
+    .catch((e) => {
+      console.log(`Error: `, e)
+      throw e
+    })
   };
 
   //cancels interview
@@ -103,9 +106,10 @@ export default function useApplicationData() {
       }));
       setDays(calculateSpots(appointments));
     })
-    .catch((e) => console.log(`Error: `, e))
-
-  
+    .catch((e) => {
+      console.log(`Error: `, e)
+      throw e
+    })
   };
 
   return { state, setDay, bookInterview, cancelInterview };

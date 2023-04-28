@@ -75,7 +75,7 @@ describe("Application", () => {
       queryByText(day, "Monday")
     );
     // 8. Check that the DayListItem with the text "Monday" also has the text "2 spots remaining".
-    expect(getByText(day, "1 spot remaining")).toBeInTheDocument();//2 spots remaining fails the test
+    expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
     debug();
   });
 
@@ -118,7 +118,7 @@ describe("Application", () => {
 
   /* test number five */
   it("shows the save error when failing to save an appointment", async () => {
-    axios.put.mockRejectedValueOnce();
+    axios.put.mockRejectedValueOnce({});
     //  1. Render the Application.
     const { container, debug } = render(<Application />);
 
@@ -140,8 +140,8 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Save"));
 
     // 6. Check if we receive an error
-    await waitForElement(() => getByText(appointment, "Save Error"));
-    expect(getByText(appointment, "Save Error")).toBeInTheDocument();
+    await waitForElement(() => getByText(appointment, "Saving Error"));
+    expect(getByText(appointment, "Saving Error")).toBeInTheDocument();
     debug();
 
   })
@@ -169,9 +169,9 @@ describe("Application", () => {
     // 5. Check for the deleting transition
     expect(getByText(appointment, /Deleting/i)).toBeInTheDocument();
     // 6. wait for the error mesage 
-    await waitForElement(() => getByText(appointment, "Error"));
+    await waitForElement(() => getByText(appointment, "Delete Error"));
     // 7. check for the error message
-    expect(getByText(appointment, /Error/i)).toBeInTheDocument();
+    expect(getByText(appointment, "Delete Error")).toBeInTheDocument();
 
   });
 
