@@ -11,7 +11,10 @@ export function getAppointmentsForDay(state, day) {
 }
 
 export function getInterviewersForDay(state, day) {
-  
+
+  if (state.days.length === 0) {
+    return [];
+  }
   const interviewersForDay = [];
   for (let thisDay of state.days) {
     if (thisDay.name === day) {
@@ -20,8 +23,9 @@ export function getInterviewersForDay(state, day) {
       }) 
     }
   };
-  
+
   return interviewersForDay;
+  
 }
 
 export function getInterview(state, interview) {
